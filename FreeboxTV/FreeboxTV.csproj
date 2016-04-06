@@ -73,7 +73,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PublishPath="C:\Users\e.laville\Documents\Visual Studio 2015\Projects\FreeboxTV" PublishMethod="LocalFile" />
+      <UserProperties PublishPath="C:\Package" PublishMethod="LocalFile" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

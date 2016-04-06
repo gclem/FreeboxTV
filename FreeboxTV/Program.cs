@@ -21,6 +21,16 @@ namespace FreeboxTV
             PackageHost.WriteInfo("Package starting - IsRunning: {0} - IsConnected: {1}", PackageHost.IsRunning, PackageHost.IsConnected);
         }
 
+        public void SendCommand(string Command, bool Type)
+        {
+            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
+            WebClient instanceHTTP = new WebClient();
+            string strReq = "";
+            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=" + Command + "&long=" + Type;
+            Uri MyURI = new Uri(strReq);
+            string retval = instanceHTTP.DownloadString(MyURI);
+        }
+
         [MessageCallback]
         /// <summary>
         /// Send power command
@@ -28,13 +38,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendPower(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=power&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("power", Type);
         }
 
         [MessageCallback]
@@ -44,13 +48,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendHome(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=home&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("home", Type);
         }
 
         [MessageCallback]
@@ -60,13 +58,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendMute(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=mute&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("mute", Type);
         }
 
         [MessageCallback]
@@ -76,13 +68,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendBack(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=back&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("back", Type);
         }
 
         [MessageCallback]
@@ -92,13 +78,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendVolumeUp(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=vol_inc&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("vol_inc", Type);
         }
 
         [MessageCallback]
@@ -108,13 +88,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendVolumeDown(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=vol_dec&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("vol_dec", Type);
         }
 
         [MessageCallback]
@@ -124,13 +98,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendChannelUp(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=prgm_inc&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("prgm_inc", Type);
         }
 
         [MessageCallback]
@@ -140,13 +108,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendChannelDown(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=prgm_dec&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("prgm_dec", Type);
         }
 
         [MessageCallback]
@@ -156,13 +118,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendOk(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=ok&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("ok", Type);
         }
 
         [MessageCallback]
@@ -172,13 +128,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendUp(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=up&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("up", Type);
         }
 
         [MessageCallback]
@@ -188,13 +138,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendDown(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=down&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("down", Type);
         }
 
         [MessageCallback]
@@ -204,13 +148,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendLeft(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=left&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("left", Type);
         }
 
         [MessageCallback]
@@ -220,13 +158,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendRight(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=right&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("right", Type);
         }
 
         [MessageCallback]
@@ -236,13 +168,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendBackward(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=bwd&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("bwd", Type);
         }
 
         [MessageCallback]
@@ -252,13 +178,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendForward(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=fwd&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("fwd", Type);
         }
 
         [MessageCallback]
@@ -268,13 +188,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendPrevious(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=prev&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("prev", Type);
         }
 
         [MessageCallback]
@@ -284,13 +198,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendNext(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=next&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("next", Type);
         }
 
         [MessageCallback]
@@ -300,13 +208,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendPlay(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=play&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("play", Type);
         }
 
         [MessageCallback]
@@ -316,13 +218,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendRed(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=red&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("red", Type);
         }
 
         [MessageCallback]
@@ -332,13 +228,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendBlue(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=blue&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("blue", Type);
         }
 
         [MessageCallback]
@@ -348,13 +238,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendGreen(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=Green&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("green", Type);
         }
 
         [MessageCallback]
@@ -364,13 +248,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendYellow(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=yellow&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("yellow", Type);
         }
 
         [MessageCallback]
@@ -380,13 +258,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendList(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=list&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("list", Type);
         }
 
         [MessageCallback]
@@ -396,13 +268,7 @@ namespace FreeboxTV
         /// <param name="Type">if set to <c>true</c> emulate long press.</param>
         public void SendTV(bool Type)
         {
-            string RemoteKey = PackageHost.GetSettingValue<string>("RemoteKey");
-            WebClient instanceHTTP = new WebClient();
-            string strReq = "";
-            strReq = "http://hd1.freebox.fr/pub/remote_control?code=" + RemoteKey + "&key=tv&long=" + Type;
-            Uri MyURI = new Uri(strReq);
-            string retval = instanceHTTP.DownloadString(MyURI);
-            PackageHost.WriteInfo(strReq);
+            SendCommand("tv", Type);
         }
 
     }
