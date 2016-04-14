@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Package xmlns="http://schemas.myconstellation.io/Constellation/1.8/PackageManifest"
          Name="FreeboxTV"
-         Version="0.2"
-         Author="Hydro"
+         Version="0.3"
+         Author="Hydro, Gclem"
          Icon="Free.png"
          URL="http://www.myconstellation.io"
          Description="Control your Freebox Player"

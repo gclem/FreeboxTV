@@ -13,7 +13,6 @@ namespace FreeboxTV
         static void Main(string[] args)
         {
             PackageHost.Start<Program>(args);
-            //PackageHost.Start<Demo>(args);
         }
 
         public override void OnStart()
