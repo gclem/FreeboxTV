@@ -60,6 +60,7 @@
     <Compile Include="Remote\Attributes\CommandAttribute.cs" />
     <Compile Include="Remote\Enumerations\FreeCommandKey.cs" />
     <Compile Include="Remote\Enumerations\FreeCommandType.cs" />
+    <Compile Include="Remote\Extensions\EnumerationExtensions.cs" />
     <Compile Include="Remote\HttpFreeRemoteController.cs" />
     <Compile Include="Remote\Interfaces\IRemoteController.cs" />
   </ItemGroup>
@@ -79,7 +80,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PublishMethod="LocalFile" PublishPath="C:\Package" />
+      <UserProperties PublishServer="http://192.168.1.200:8088" PublishMethod="ConstellationServer" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

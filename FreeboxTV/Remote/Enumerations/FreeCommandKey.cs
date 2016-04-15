@@ -80,7 +80,7 @@
         [Command("right")]
         Right,
         [Command("down")]
-        Down, // Bouton bas
+        Down,
         [Command("left")]
         Left,
 
